@@ -1,11 +1,17 @@
 language: elixir
 elixir:
-  - 1.2
+- 1.2
 otp_release:
-  - 18.2
+- 18.2
 sudo: false
 addons:
-  postgresql: '9.4' # Use postgres 9.4
+  postgresql: '9.4'
 before_script:
-# Create the test database
 - psql -c 'create database trechter_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: v5zVzfd7ZRAJtSeNV6sjkvwYOBXa/wkyhkyHeMM7pYHqBD40eipl4OKLQ0PdO04GdzPo72i+vL2xr1labCcRpfvqFEq5026rM0XYHBVRihJa5g7VVMZn1ZD4Mr+YN5gQwaHOwDcuIPHao2WOfbiq1ZKU2qBoRIoo2itoyi52pbqONrBX1HfxAhGID1De8ZwEzR48wY46qLWdvnLF9MOlqUpIY7KEb2XEWnLikn5fGQEUbxmaRwNmmRj1j8sc9aNfNe3vzvo11kZUIEIKg9toWh8kGW4J/zkNNUYiapPV3vRSdKKLfZ+Ge3l0DAdpT33JIctoYxm0+akUretgL72u9dRyqde6gGI1/wTyqT4pDwNVMRUlq8qryZbSVCT+ft06G3k1ST3t6tF03R6WXsxT9loMuCS33U/WIUIhiGmoHgKUCTwunj45Wd6wEE6nNEYCXgwk0Z5il5t/c0O7y2J3qup4bC6eIWcE8agyseN7XaWPCyh0b/z9HGI1aH0PHn0ZVMfRC/GPapjEBhbaKtbQQiAdOGpUOzay/vpYuOIt5RED9SZJkBT9OXGSBNfopJDaIudeBGJePZB+MyCdBzWCJn6sBEnKc63XRF7c0VaacLGMY9PZ+pwPwnBpGiYNCuehiEYnpNKZU9c6SPCAVouLHR8ZzSMfiRM8CBZlFJIWxUM=
+  app: trechter
+  on:
+    repo: douweh/trechter
